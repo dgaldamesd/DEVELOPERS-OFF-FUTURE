@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Spotify</title>
+    <link rel="stylesheet" href="/static/perfil.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">HOME</a></li>
+            <li><a href="/tendencias">TENDENCIAS</a></li>
+            <li><a href="/top_tracks">Top Tracks</a></li>
+            <li><a href="/top_artists">Top Artists</a></li>
+            <li><a href="/perfil" id="link">MI PERFIL</a></li>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>        
+    </nav>
+    <main>
+        <section id="BOX-MAIN">
+            
+            <div id="IMAGEN">
+                <img src="{{ perfil_data.images[1].url }}" alt="Imagen de perfil">
+                <p>{{ perfil_data.display_name }}</p>
+            </div>
+            <div id="INFO">
+                <p>ID de usuario: {{ perfil_data.id }}</p>
+                <p>País: Chile</p>
+                <p>Seguidores: {{ perfil_data.followers.total }}</p>
+                <p>Tipo de cuenta: Premium </p>
+                <p>Enlace externo: <a href="{{ perfil_data.external_urls.spotify }}">Perfil de Spotify</a></p>
+            </div>                               
+        </section>
+    
+</body>
+</html>
+
+

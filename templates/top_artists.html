@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Artists</title>
+    <link rel="stylesheet" href="/static/artists.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">HOME</a></li>
+            <li><a href="/tendencias">TENDENCIAS</a></li>
+            <li><a href="/top_tracks">Top Tracks</a></li>
+            <li><a href="/top_artists" id="link">Top Artists</a></li>
+            <li><a href="/perfil" >MI PERFIL</a></li>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>        
+    </nav>
+    <main>
+        <section id="BOX-MAIN">
+            <div class="container">
+                <h1>TOP ARTISTS</h1>
+                <div class="card-container">
+                    {% for artist in artists %}
+                        <div class="card">
+                            <img src="{{ artist.images.0.url }}" alt="{{ artist.name }}">
+                            <div class="info">
+                                <h2>{{ artist.name }}</h2>
+                                <p>Followers: {{ artist.followers.total }}</p>
+                                <p>Popularity: {{ artist.popularity }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>                
+                                          
+        </section>
+</body>
+</html>

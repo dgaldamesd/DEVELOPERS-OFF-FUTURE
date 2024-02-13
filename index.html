@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recomendador de Playlist</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <section id="BOX-GENERAL">
+            
+            <section id="BOX-IZ">
+                <img src="IMG1.jpg" alt="">
+
+            </section>
+            <section id="BOX-DER">
+                <h1>OLA COMO ESTAN?</h1>
+                <nav>
+                    <a href="#">HOME</a>
+                    <a href="#">Quiz</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <div class="animation start-home"></div>
+                </nav>
+
+                <div id="questions">
+                    <h2>Responde a las siguientes preguntas para recibir tu recomendación de playlist:</h2>
+                    <form id="question-form">
+                      <label for="genre">¿Qué género musical te gusta más?</label>
+                      <input type="text" id="genre" name="genre" required>
+                      <label for="mood">¿Cuál es tu estado de ánimo actual?</label>
+                      <input type="text" id="mood" name="mood" required>
+                      <button type="submit">Obtener Recomendación</button>
+                    </form>
+                  </div>
+                  <div id="playlist">
+                    <h2>Playlist Recomendada:</h2>
+                    <ul id="playlist-results">
+                      <!-- Aquí se mostrarán las playlist recomendadas -->
+                    </ul>
+                  </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+  <footer>
+    <p>Powered by Spotify API</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

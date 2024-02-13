@@ -1,0 +1,272 @@
+/* Estilos por defecto para el cuerpo y HTML */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Importación de la fuente de Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+/* Estilos para el nav fijo */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #e1283a;
+    display: flex;
+    z-index: 1000; /* Asegura que el nav esté por encima de otros elementos */
+    justify-content: center;
+}
+
+ul {
+    display: flex;
+    align-items: start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    padding: 6px 0;
+}
+
+ul li a {
+    --fill-color: #FFFFFF;
+    position: relative;
+    display: block;
+    padding: 4px 22px;
+    font: 700 1.5rem 'Raleway', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--fill-color);
+    background: linear-gradient(var(--fill-color) 0 100%) left / 0 no-repeat;
+    color: transparent;
+    background-clip: text;
+    transition: 0.5s linear;
+}
+
+ul li a:hover {
+    background-size: 100%;
+}
+
+
+.link {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+/* Ajuste del contenido principal para evitar que se superponga con el nav */
+body {
+    margin-top: 40px; /* Ajusta el margen superior para que el contenido no se superponga con el nav */
+}
+
+/* Estilos para la sección BOX-MAIN */
+#BOX-MAIN {
+    width: 100%;
+    height: 100vh;
+    background:linear-gradient(30deg, #1f51a4, #eb7339, #e1283a);
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; 
+}
+
+#FONDO {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#TEXTO {
+    margin: 15%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center; /* Centrar el texto horizontalmente */
+    color: #1f51a4; /* Color del texto blanco para contraste */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Difuminado blanco alrededor del texto */
+}
+
+#TEXTO h1 {
+    font-size: 80px; /* Tamaño grande para el título */
+    margin-bottom: 10px; /* Espacio entre el título y el eslogan */
+}
+
+#TEXTO h2 {
+    font-size: 24px; /* Tamaño más pequeño para el eslogan */
+    font-style: italic; /* Estilo cursiva para el eslogan */
+}
+
+/* Estilos para la sección BOX-CONTAINER */
+#BOX-TENDENCIAS{
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100vh; /* Un poco más grande que el 100vh */
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(#5e4b8a, #204184, #1f51a4);
+    margin: 0;
+    text-align: center;
+    position: relative;
+}
+
+#BOX-TENDENCIAS::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('grain-texture.png'); /* Ruta de tu imagen de patrón granulado */
+    opacity: 0.2; /* Ajusta la opacidad según tu preferencia */
+    pointer-events: none; /* Evita que el pseudo-elemento interfiera con los eventos del ratón */
+}
+
+
+#BOX-TENDENCIAS h1 {
+    margin-top: 50px;
+}
+#HORIZONTAL1, #HORIZONTAL2 {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#SECTION1, #SECTION2, #SECTION3, #SECTION4 {
+    display: flex;
+    justify-content: center; /* Centro horizontal */
+    align-items: center; /* Centro vertical */
+    width: 30%;
+    height: 70%;
+    margin: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid black; /* Añade bordes o estilos de borde según sea necesario */
+    transition: transform 0.3s ease; /* Añade una transición suave para el efecto */
+}
+
+#SECTION1:hover, #SECTION2:hover, #SECTION3:hover, #SECTION4:hover {
+    background-color: lightgray; /* Cambia el color de fondo al pasar el cursor */
+    transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+}
+
+/* Estilos para la sección PLAYLISTS-BOX */
+#TRACKS-BOX {
+    width: 100%;
+    height: 100vh; /* Aumenta la altura de la sección */
+    background-color: #e1283a;
+
+}
+
+#TRACKS-CONTENT {
+    text-align: center;
+    display: flex; /* Centra el contenido horizontalmente */
+    color: #fff; /* Color del texto */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#BOX button {
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    border: none; /* Quita el borde del botón */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave al cambiar el color de fondo */
+    margin-bottom: 20px; /* Espacio entre el botón y el párrafo */
+    margin-top: 200px;
+
+}
+
+#TRACKS-CONTENT h1 {
+    margin-top: 200px;
+    padding: 0px 50px;
+    text-align: center;
+    color: #FFFF;
+
+}
+
+#TRACKS-CONTENT p {
+    margin-top: 200px;
+    padding: 0px 100px;
+    text-align: justify;
+    color: #FFFF;
+
+}
+
+/* Estilos para la sección GENEROS-BOX */
+#ART-BOX {
+    width: 100%;
+    height: 100vh; /* Aumenta la altura de la sección */
+    background-color: #eb7339;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ART-CONTENT {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#ART-CONTENT h1 {
+    margin-top: 200px;
+    padding: 0px 50px;
+    text-align: center;
+    color: #FFFF;
+
+}
+
+#ART-CONTENT p {
+    margin-top: 200px;
+    padding: 0px 100px;
+    text-align: justify;
+    text-align: center;
+    color: #FFFF;
+
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #400073;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(4, 186, 13);
+}
+
+h1 {
+    text-align: center;
+    color: #FFFF;
+}
+
+.artists-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.artists-list li {
+    padding: 10px;
+    border-bottom: 1px solid #FFFF;
+    color: aliceblue;
+}
+
+.artists-list li:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+    }
+}
