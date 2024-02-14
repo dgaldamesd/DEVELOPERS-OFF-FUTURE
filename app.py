@@ -7,7 +7,7 @@ app.secret_key = 'your_secret_key'
 # Spotify API credentials
 CLIENT_ID = 'e16d3a403cb64a46a670e2f7dcabe870'
 CLIENT_SECRET = 'f6b4df7bbf64476b8b67b34ff4a5cdfa'
-REDIRECT_URI = 'http://3.145.16.204:5000/callback'  # Reemplaza tu_direccion_ip y puerto
+REDIRECT_URI = 'http://18.190.136.78:8080/callback'  # Reemplaza tu_direccion_ip y puerto
 SCOPE = 'user-top-read'  # Cambiar el alcance para obtener los artistas más populares y las canciones más escuchadas
 
 @app.route('/logout')
@@ -51,8 +51,38 @@ def callback():
     return redirect('/home')
 
 @app.route('/home')
-def home():
-    return render_template('home.html')
+def get_featured_playlists():
+    # Token de acceso de la sesión
+    access_token = session.get('access_token')
+    
+    if access_token:
+        # URL de la API de Spotify
+        url = 'https://api.spotify.com/v1/browse/featured-playlists'
+        
+        # Headers de la solicitud
+        headers = {
+            'Authorization': 'Bearer ' + access_token
+        }
+        
+        try:
+            # Realizar la solicitud GET a la API de Spotify
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()  # Lanza una excepción si la solicitud no fue exitosa
+            
+            # Obtener los datos de las playlists
+            playlists_data = response.json()['playlists']['items']
+            
+            # Agregar índices a las playlists
+            playlists_data_with_index = [(index, playlist) for index, playlist in enumerate(playlists_data)]
+            
+            # Renderizar el template home.html y pasar los datos de las playlists como contexto
+            return render_template('home.html', playlists=playlists_data_with_index)
+        except requests.exceptions.RequestException as e:
+            print("Error al realizar la solicitud a la API de Spotify:", e)
+            return render_template('error.html', message='Error al obtener las listas de reproducción destacadas.'), 500
+    else:
+        return render_template('error.html', message='No hay token de acceso. Debes autorizar la aplicación primero.'), 401
+
 
 @app.route('/top_tracks')
 def top_tracks():
@@ -85,8 +115,6 @@ def top_tracks():
             return render_template('error.html', message='Error al obtener las canciones más escuchadas.')
     else:
         return render_template('error.html', message='No hay token de acceso. Debes autorizar la aplicación primero.')
-
-
 
 @app.route('/top_artists')
 def top_artists():
@@ -140,5 +168,7 @@ def perfil():
     else:
         return jsonify({'error': 'No hay token de acceso. Debes autorizar la aplicación primero.'})
 
+# Nuevo endpoint para obtener listas de reproducción destacadas de Spotify
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)  # Cambia el puert
+    app.run(host='0.0.0.0', port=8080, debug=True)  # Cambia el puert

@@ -32,25 +32,23 @@
         <section id="DT">
             <div id="BOX-TENDENCIAS">
                 <h1>TENDENCIAS MUSICALES</h1>
-                <div id="HORIZONTAL1" >
-                    <div id="SECTION1">
-                        <h1>BOX 1</h1>
+                <div id="HORIZONTAL1">
+                    {% for index, playlist in playlists %}
+                    {% if index < 6 %}
+                    <div id="SECTION{{ index + 1 }}">
+                        <div class="playlist-box">
+                            <h2>{{ playlist.name }}</h2>
+                            <p>{{ playlist.description }}</p>
+                            <img src="{{ playlist.images[0].url }}" alt="{{ playlist.name }}">
+                        </div>
                     </div>
-        
-                    <div id="SECTION2">
-                        <h1>BOX 2</h1>    
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div id="HORIZONTAL2">
+                    <div class="playlist-box">
                     </div>
                 </div>
-                <div id="HORIZONTAL2" >
-                    <div id="SECTION3">
-                        <h1>BOX 3</h1>
-                    </div>
-        
-                    <div id="SECTION4">
-                        <h1>BOX 4</h1>    
-                    </div>
-        
-                </div>       
             </div>
 
         </Section>
