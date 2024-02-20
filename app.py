@@ -8,7 +8,7 @@ app.secret_key = 'your_secret_key'
 CLIENT_ID = 'e16d3a403cb64a46a670e2f7dcabe870'
 CLIENT_SECRET = 'f6b4df7bbf64476b8b67b34ff4a5cdfa'
 REDIRECT_URI = 'http://18.190.136.78:8080/callback'  # Reemplaza tu_direccion_ip y puerto
-SCOPE = 'user-top-read'  # Cambiar el alcance para obtener los artistas más populares y las canciones más escuchadas
+SCOPE = 'user-top-read user-read-recently-played'  # Cambiar el alcance para obtener los artistas más populares y las canciones más escuchadas
 
 @app.route('/logout')
 def logout():
@@ -26,6 +26,7 @@ def login():
     # Redirige al usuario a la página de autorización de Spotify
     authorization_url = f'https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&response_type=code&redirect_uri={REDIRECT_URI}&scope={SCOPE}'
     return redirect(authorization_url)
+
 
 @app.route('/callback')
 def callback():
@@ -168,7 +169,32 @@ def perfil():
     else:
         return jsonify({'error': 'No hay token de acceso. Debes autorizar la aplicación primero.'})
 
-# Nuevo endpoint para obtener listas de reproducción destacadas de Spotify
+
+
+@app.route('/recently_played')
+def recently_played():
+    # Obtener el token de acceso de la sesión
+    access_token = session.get('access_token')
+
+    if access_token:
+        headers = {
+            'Authorization': 'Bearer ' + access_token
+        }
+        limit = request.args.get('limit', default=5, type=int)  # Obtener el parámetro de límite, predeterminado a 5 si no se proporciona
+        endpoint = f'https://api.spotify.com/v1/me/player/recently-played?limit={limit}'
+        try:
+            response = requests.get(endpoint, headers=headers)
+            response.raise_for_status()  # Lanza una excepción si la solicitud no fue exitosa
+            recently_played_data = response.json()['items']
+            
+            return render_template('recently_played.html', tracks=recently_played_data)
+        except requests.exceptions.RequestException as e:
+            print("Error al realizar la solicitud a la API de Spotify:", e)
+            return render_template('error.html', message='Error al obtener los tracks reproducidos recientemente.')
+    else:
+        return render_template('error.html', message='No hay token de acceso. Debes autorizar la aplicación primero.')
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080, debug=True)  # Cambia el puert
