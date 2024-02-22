@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Artists</title>
-    <link rel="stylesheet" href="/static/artists.css">
+    <link rel="stylesheet" href="/static/recent.css">
 </head>
-
 <body>
     <nav>
         <ul>
@@ -18,14 +17,17 @@
             <li><a href="/logout">Cerrar sesión</a></li>
         </ul>        
     </nav>
+    
     <main>
         <section id="BOX-MAIN">
             <div class="container">
-                <h1>TOP ARTISTS</h1>
+                <h1>RECIENTEMENTE ESUCHADAS</h1>
                 <div class="card-container">
                     {% for track in tracks %}
                     <div class="track">
-                        <img src="{{ track['track']['album']['images'][0]['url'] }}" alt="{{ track['track']['name'] }}">
+                        <a href="{{ track['track']['external_urls']['spotify'] }}" target="_blank">
+                            <img src="{{ track['track']['album']['images'][0]['url'] }}" alt="{{ track['track']['name'] }}">
+                        </a>
                         <div class="track-info">
                             <h2>{{ track['track']['name'] }}</h2>
                             <p>{{ track['track']['artists'][0]['name'] }}</p>
@@ -34,8 +36,7 @@
                     {% endfor %}
                 </div>
             </div>                
-                                          
         </section>
+    </main>
 </body>
 </html>
-

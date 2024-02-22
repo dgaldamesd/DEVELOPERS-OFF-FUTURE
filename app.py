@@ -180,7 +180,7 @@ def recently_played():
         headers = {
             'Authorization': 'Bearer ' + access_token
         }
-        limit = request.args.get('limit', default=5, type=int)  # Obtener el parámetro de límite, predeterminado a 5 si no se proporciona
+        limit = request.args.get('limit', default=6, type=int)  # Obtener el parámetro de límite, predeterminado a 5 si no se proporciona
         endpoint = f'https://api.spotify.com/v1/me/player/recently-played?limit={limit}'
         try:
             response = requests.get(endpoint, headers=headers)
