@@ -32,7 +32,7 @@
                 <h1>TENDENCIAS MUSICALES</h1>
                 <div id="HORIZONTAL1" class="horizontal-container">
                     {% for index, playlist in playlists %}
-                    {% if index < 4 %}
+                    {% if index < 8 %}
                     <div id="SECTION{{ index + 1 }}" class="playlist-item">
                         <div class="playlist-box">
                             <a href="{{ playlist.external_urls.spotify }}" target="_blank">
@@ -43,18 +43,7 @@
                     {% endif %}
                     {% endfor %}
                 </div>
-                <div id="HORIZONTAL2" class="horizontal-container">
-                    {% for index, playlist in playlists %}
-                    {% if index >= 4 and index <= 7 %}
-                    <div id="SECTION{{ index + 1 }}" class="playlist-item">
-                        <div class="playlist-box">
-                            <a href="{{ playlist.external_urls.spotify }}" target="_blank">
-                                <img src="{{ playlist.images[0].url }}" alt="{{ playlist.name }}">
-                            </a>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
+                
                 </div>
             </div>
         </section>

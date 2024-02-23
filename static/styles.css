@@ -5,12 +5,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
+
 }
 
 .playlist-item {
-    width: calc(25% - 20px);
-    margin: 10px;
+    /* Ajusta el tamaño de cada elemento según tus necesidades */
+    width: 200px;
+    margin-right: 10px; /* Reduje el margen entre cada playlist */
+}
+
+/* Elimina el margen derecho del último elemento para evitar un espacio adicional */
+.playlist-item:last-child {
+    margin-right: 0;
 }
 
 /* Ajustar el tamaño de las imágenes */
@@ -127,7 +133,7 @@ body, html {
 #BOX-TENDENCIAS{
     width: 100; /* Ocupa todo el ancho */
     height: auto; /* Un poco más grande que el 100vh */
-    padding: 20px;
+    padding: 1px;
     box-sizing: border-box;
     background: linear-gradient(#5e4b8a, #204184, #1f51a4);
     margin: 0;
